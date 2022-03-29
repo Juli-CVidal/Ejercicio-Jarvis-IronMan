@@ -28,7 +28,7 @@ public class Interfaz {
         String colorSec = pedirTexto();
 
         this.Armor = new Armadura(nombre, colorPrim, colorSec);
-        
+
         this.ServDisp = new ServiciosDispositivo();
         this.ServArm = new ServiciosArmadura(); //contiene servicios de dispositivo
         this.ServRad = new ServiciosRadar(); //contiene servicios de armadura y dispositivo
@@ -43,24 +43,25 @@ public class Interfaz {
         float segs, energiaConsumida;
 
         do {
-            System.out.printf( "\nEnergia restante: %.4f %s \n", Armor.getPorcentajeEnergia() , "%" );
+            System.out.printf("\nEnergia restante: %.4f %s \n", Armor.getPorcentajeEnergia(), "%");
             mostrarOpciones("Acciones disponibles: ", acciones);
             opc = leer.nextInt() - 1;
 
             if (opc < 0 || opc > 2) {
+                System.out.println("No ha ingresado una opción válida");
                 continue;
             }
 
             switch (opc) {
                 case 0:
-                    if (ServDisp.botasDestruidas(Armor.getBotaIzq(),Armor.getBotaDer()) == false) {
+                    if (ServDisp.botasDestruidas(Armor.getBotaIzq(), Armor.getBotaDer()) == false) {
                         menuAccionesMovilidad();
                     } else {
                         System.out.println("Una bota se encuentra destruída, no es posible desplazarse");
                     }
                     break;
                 case 1:
-                    if (ServDisp.guantesDestruidos(Armor.getGuanteIzq(),Armor.getGuanteDer()) == false) {
+                    if (ServDisp.guantesDestruidos(Armor.getGuanteIzq(), Armor.getGuanteDer()) == false) {
                         menuAccionesOfensivas();
                     } else {
                         System.out.println("Un guante se encuentra destruído, no es posible atacar");
@@ -83,7 +84,7 @@ public class Interfaz {
         int opc;
         double segs, energiaConsumir;
         do {
-            System.out.printf( "\nEnergia restante: %.4f %s \n", Armor.getPorcentajeEnergia() , "%" );
+            System.out.printf("\nEnergia restante: %.4f %s \n", Armor.getPorcentajeEnergia(), "%");
             usoBotas = "ninguno";
             usoGuantes = "ninguno";
 
@@ -95,7 +96,8 @@ public class Interfaz {
                 }
                 continue;
             }
-            if (ServDisp.botasDisponibles(botaIzq,botaDer) == false || (opc == 3 && ServDisp.guantesDisponibles(guanteIzq,guanteDer) == false)) {
+
+            if (ServDisp.botasDisponibles(botaIzq, botaDer) == false || (opc == 3 && ServDisp.guantesDisponibles(guanteIzq, guanteDer) == false)) {
                 System.out.println("Un dispositivo está dañado, no se puede realizar la acción");
                 continue;
             }
@@ -112,31 +114,31 @@ public class Interfaz {
                     usoBotas = "normal";
                     break;
 
-                case 3:
+                case 3: //tanto la opción 3 como la 2 requieren un uso intensivo de botas
                     usoGuantes = "normal";
                 case 2:
                     usoBotas = "intensivo";
                     break;
             }
 
-            energiaConsumir = ServArm.calcularConsumo(Armor.getConsumoBasicoBotas(), Armor.getConsumoBasicoGuantes(),usoBotas, usoGuantes, segs);
+            energiaConsumir = ServArm.calcularConsumo(Armor.getConsumoBasicoBotas(), Armor.getConsumoBasicoGuantes(), usoBotas, usoGuantes, segs);
             if (energiaConsumir > Armor.getEnergiaActual()) {
                 System.out.println("No hay energía suficiente para realizar la acción.");
                 continue;
             }
 
-            ServArm.consumirYMostrarConsumo(Armor,energiaConsumir);
+            ServArm.consumirYMostrarConsumo(Armor, energiaConsumir);
             if (!usoGuantes.equals("ninguno")) {
-                if(ServDisp.usarTodos(Armor)){
+                if (ServDisp.usarTodos(Armor)) {
                     System.out.println("Se ha dañado uno o más dispositivos");
                 }
             } else {
-                if(ServDisp.usarBotas(botaIzq,botaDer)){
+                if (ServDisp.usarBotas(botaIzq, botaDer)) {
                     System.out.println("Se ha dañado uno o más dispositivos");
                 }
             }
 
-        } while (opc != 4 && Armor.getPorcentajeEnergia()>0);
+        } while (opc != 4 && Armor.getPorcentajeEnergia() > 0);
     }
 
     public void menuAccionesOfensivas() {
@@ -146,11 +148,14 @@ public class Interfaz {
         double energiaConsumida;
 
         do {
-            System.out.printf( "\nEnergia restante: %.4f %s \n", Armor.getPorcentajeEnergia() , "%" );
+            System.out.printf("\nEnergia restante: %.4f %s \n", Armor.getPorcentajeEnergia(), "%");
             mostrarOpciones("Opciones disponibles: ", acciones);
             opc = leer.nextInt() - 1;
 
-            if (opc < 0 || opc > 2) {
+            if (opc < 0 || opc > 1) {
+                if (opc != 2) {
+                    System.out.println("No ha ingresado una opción válida");
+                }
                 continue;
             }
 
@@ -175,12 +180,12 @@ public class Interfaz {
 
                     energiaConsumida = ServRad.atacar(Armor, target);
                     if (energiaConsumida != 0) {
-                        ServArm.consumirYMostrarConsumo(Armor,energiaConsumida);
+                        ServArm.consumirYMostrarConsumo(Armor, energiaConsumida);
                     }
 
                     break;
             }
-        } while (opc != 2 && Armor.getPorcentajeEnergia()>=10);
+        } while (opc != 2 && Armor.getPorcentajeEnergia() >= 10);
     }
 
     private void menuAccionesMantenimiento() {
@@ -188,10 +193,13 @@ public class Interfaz {
         int opc;
 
         do {
-            System.out.printf( "\nEnergia restante: %.4f %s \n", Armor.getPorcentajeEnergia() , "%" );
+            System.out.printf("\nEnergia restante: %.4f %s \n", Armor.getPorcentajeEnergia(), "%");
             mostrarOpciones("Opciones disponibles: ", acciones);
             opc = leer.nextInt() - 1;
             if (opc < 0 || opc > 4) {
+                if (opc != 5) {
+                    System.out.println("No ha ingresado una opción válida");
+                }
                 continue;
             }
 
