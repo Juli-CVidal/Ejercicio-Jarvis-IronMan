@@ -47,7 +47,7 @@ public class Interfaz {
             mostrarOpciones("Acciones disponibles: ", acciones);
             opc = leer.nextInt() - 1;
 
-            if (opc < 0 || opc > 2) {
+            if (opc < 0 || opc > 3) {
                 System.out.println("No ha ingresado una opción válida");
                 continue;
             }
