@@ -1,9 +1,16 @@
 /*
 // Curso Egg FullStack
  */
-package Entidades;
+package Servicios;
 
 // @author JulianCVidal
+
+import Entidades.Armadura;
+import Entidades.Objetivo;
+import Entidades.Radar;
+import Servicios.ServiciosDispositivo;
+import Servicios.ServiciosArmadura;
+
 public class ServiciosRadar {
     private final ServiciosArmadura ServArm;
     private final ServiciosDispositivo ServDisp;

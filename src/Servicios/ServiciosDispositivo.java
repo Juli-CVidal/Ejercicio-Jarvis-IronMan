@@ -1,9 +1,13 @@
 /*
 // Curso Egg FullStack
  */
-package Entidades;
+package Servicios;
 
 // @author JulianCVidal
+
+import Entidades.Armadura;
+import Entidades.Dispositivo;
+
 public class ServiciosDispositivo {
 
     //Métodos para ver el estado de los dispositivos

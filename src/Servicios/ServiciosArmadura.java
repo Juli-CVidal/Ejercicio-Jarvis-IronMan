@@ -1,9 +1,12 @@
 /*
 // Curso Egg FullStack
  */
-package Entidades;
+package Servicios;
 
 // @author JulianCVidal
+
+import Entidades.Armadura;
+
 public class ServiciosArmadura {
 
     private final ServiciosDispositivo ServDisp;

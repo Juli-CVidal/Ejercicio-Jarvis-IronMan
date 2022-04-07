@@ -9,5 +9,10 @@
         <group name="OBLIGATORIOS Colecc">
             <file>file:/D:/EGG-FullStack/Módulo%202/EJERCICIOS%20JAVA/GUIA%206%20POO/EXTRAS%20V2/Jarvis-2.0/src/Entidades/Interfaz.java</file>
         </group>
+        <group name="OBLIGATORIOS"/>
+        <group name="EXTRAS">
+            <file>file:/D:/EGG-FullStack/Módulo%202/EJERCICIOS%20JAVA/GUIA%206%20POO/EXTRAS%20V2/Jarvis-2.0/src/Servicios/ServiciosArmadura.java</file>
+            <file>file:/D:/EGG-FullStack/Módulo%202/EJERCICIOS%20JAVA/GUIA%206%20POO/EXTRAS%20V2/Jarvis-2.0/src/Entidades/Interfaz.java</file>
+        </group>
     </open-files>
 </project-private>

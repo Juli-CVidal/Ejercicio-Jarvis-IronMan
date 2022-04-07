@@ -4,6 +4,7 @@
 package Entidades;
 
 // @author JulianCVidal
+import Servicios.*;
 import java.util.Scanner;
 
 public class Interfaz {
